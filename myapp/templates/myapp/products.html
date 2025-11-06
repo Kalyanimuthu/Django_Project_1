@@ -1,0 +1,21 @@
+
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Product Showcase</h1>
+<div id="categories">
+  <button onclick="filterProducts('All')">All</button>
+  <button onclick="filterProducts('Gadgets')">Gadgets</button>
+  <button onclick="filterProducts('Clothing')">Clothing</button>
+</div>
+<div class="grid" id="productGrid">
+  {% for product in products %}
+  <div class="card" data-category="{{ product.category }}">
+    <img src="/static/images/{{ product.image }}" alt="{{ product.name }}" class="product-img">
+    <h3>{{ product.name }}</h3>
+    <p>₹{{ product.price }}</p>
+    {% if product.sale %}<span class="badge">Sale</span>{% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

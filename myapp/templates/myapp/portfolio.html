@@ -1,0 +1,33 @@
+
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero animate">
+  <h1>Welcome to My Portfolio</h1>
+  <p>Hi, I'm Kalyani — a passionate Python Full Stack Developer.</p>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <ul class="skills">
+    {% for skill in skills %}
+      <li>{{ skill }}</li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <div class="grid">
+    {% for p in projects %}
+      <div class="card">
+        <h3>{{ p.name }}</h3>
+        <p>{{ p.desc }}</p>
+        <small>{{ p.tech }}</small>
+      </div>
+    {% empty %}
+      <p>No projects available yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

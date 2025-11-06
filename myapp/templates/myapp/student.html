@@ -1,0 +1,26 @@
+
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Student Dashboard</h1>
+<h3>{{ student.name }}</h3>
+<ul class="marks">
+  {% for mark in student.marks %}
+    <li {% if mark >= 50 %}class="pass"{% else %}class="fail"{% endif %}>Subject {{ forloop.counter }} - {{ mark }}%</li>
+  {% endfor %}
+</ul>
+<div class="chart">
+  <canvas id="progressChart"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('progressChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Sub1','Sub2','Sub3','Sub4','Sub5'],
+    datasets: [{ label: 'Marks', data: {{ student.marks }}, backgroundColor: ['#81C784','#FFB74D','#E57373','#6C63FF','#81C784'] }]
+  }
+});
+</script>
+{% endblock %}
