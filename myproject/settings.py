@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['myproject.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['django-project-1-ozu2.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
