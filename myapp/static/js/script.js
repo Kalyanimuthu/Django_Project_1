@@ -1,11 +1,8 @@
-
-function filterProducts(category) {
-  const cards = document.querySelectorAll('#productGrid .card');
-  cards.forEach(card => {
-    if (category === 'All' || card.dataset.category === category) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
+document.addEventListener("DOMContentLoaded", function() {
+  const addToCartBtn = document.querySelector('.btn-primary');
+  if (addToCartBtn) {
+    addToCartBtn.addEventListener('click', () => {
+      alert("Product added to cart!");
+    });
+  }
+});

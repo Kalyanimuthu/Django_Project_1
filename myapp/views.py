@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Product
 
 
 def portfolio(request):
@@ -11,14 +12,13 @@ def portfolio(request):
     ]
     return render(request, 'myapp/portfolio.html', {'skills': skills, 'projects': projects})
 
-def products(request):
-    products = [
-        {'name': 'Smartwatch', 'price': 2499, 'image': 'watch.jpg', 'category': 'Gadgets', 'sale': True},
-        {'name': 'Wireless Earbuds', 'price': 1599, 'image': 'earbuds.jpg', 'category': 'Gadgets', 'sale': False},
-        {'name': 'Cotton Shirt', 'price': 799, 'image': 'shirt.jpg', 'category': 'Clothing', 'sale': True},
-        {'name': 'Sneakers', 'price': 2199, 'image': 'sneakers.jpg', 'category': 'Clothing', 'sale': False},
-    ]
-    return render(request, 'myapp/products.html', {'products': products})
+def product_list(request):
+    products = Product.objects.all()
+    return render(request, 'myapp/product_list.html', {'products': products})
+
+def product_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'myapp/product_detail.html', {'product': product})
 
 def student(request):
     student = {'name': 'Kalyani', 'marks': [85, 92, 76, 60, 45]}
