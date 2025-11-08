@@ -13,6 +13,13 @@ def portfolio(request):
     return render(request, 'myapp/portfolio.html', {'skills': skills, 'projects': projects})
 
 def product_list(request):
+    # Create a test product if none exist
+    if not Product.objects.exists():
+        Product.objects.create(
+            name="Sample Product",
+            price=199,
+        )
+
     products = Product.objects.all()
     return render(request, 'myapp/product_list.html', {'products': products})
 
