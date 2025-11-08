@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
 # DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 DEBUG = False
 
-ALLOWED_HOSTS = ['django-project-1-ozu2.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['django-project-1-ozu2.onrender.com', 'web-production-dae5a.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
