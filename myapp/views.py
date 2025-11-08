@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Product, Category
 
 
 def portfolio(request):
@@ -13,11 +13,15 @@ def portfolio(request):
     return render(request, 'myapp/portfolio.html', {'skills': skills, 'projects': projects})
 
 def product_list(request):
+    # Create a test category if it doesn't exist
+    category, created = Category.objects.get_or_create(name="Default Category")
+    
     # Create a test product if none exist
     if not Product.objects.exists():
         Product.objects.create(
             name="Sample Product",
             price=199,
+            category=category
         )
 
     products = Product.objects.all()
